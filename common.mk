@@ -31,6 +31,9 @@ TARGET_EXCLUDE_QCOM_SEPOLICY := true
 $(call inherit-product, device/qcom/common/common.mk)
 include vendor/qcom/opensource/core-utils/build/utils.mk
 
+# OnePlus apps
+$(call inherit-product-if-exists, vendor/oneplus/apps/apps-vendor.mk)
+
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -388,6 +391,11 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-lite-3.9.1-vendorcompat \
     libprotobuf-cpp-full-3.9.1-vendorcompat
 
+# OnePlus Apps
+PRODUCT_PACKAGES += \
+    OnePlusCameraOverlay \
+    OnePlusGalleryOverlay
+    
 # QMI
 PRODUCT_PACKAGES += \
     libjson \
